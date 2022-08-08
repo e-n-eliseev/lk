@@ -1,0 +1,263 @@
+.buy, .sticky-body {
+    background-color: #FFFFFF;
+    box-shadow: 0px 8px 24px rgba(29, 29, 27, 0.08);
+    display: flex;
+    &__form {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+    &__product {
+        display: flex;
+        & svg{
+            flex-shrink: 0;
+            margin-right: 12px;
+        }
+    }
+
+    &__heading {
+        @include font(21px, 700);
+        line-height: 25px;
+        color: $heading-text-color;
+    }
+
+    &__divider {
+        width: 1px;
+        height: 100%;
+        background-color: $divider-buy-color;
+    }
+
+    &__conditions {
+        display: flex;
+        align-items: center;
+
+    }
+
+    &__users, &__years {
+        margin: 0 6px;
+        position: relative;
+        user-select: none;
+        height: 48px;
+        align-self: start;
+        padding-top: 9px;
+        &-heading{
+            @include font(18px,400);
+            margin-bottom: 9px;
+        }
+        &-text{
+            @include font(16px,400);
+            color: $divider-os-color;
+            position: absolute;
+            top: 91px;
+        }
+        &-select {
+            position: relative;
+            z-index: 1;
+            &.open .buy__users-options {
+                @extend %open;
+            }
+            &.open .buy__years-options {
+                @extend %open;
+            }
+        }
+
+        &-trigger {
+            width: 97px;
+            height: 48px;
+            border: 1.5px solid #23D1AE;
+            border-radius: 4px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 12px;
+            @include font(16px, 400);
+            background: #ffffff;
+            cursor: pointer;
+        }
+
+        &-options {
+            @include font(16px, 400);
+            border: 1.5px solid #23D1AE;
+            border-radius: 4px;
+            background: $main-bg-color;
+            transition: all 0.5s;
+            @extend %hidden;
+        }
+
+        &-option {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 5px;
+            cursor: pointer;
+            transition: all 0.5s;
+
+            &:hover {
+                background-color: $divider-buy-color;
+            }
+
+            &.selected {
+                color: $main-bg-color;
+                background-color: $checkbox-bg-color;
+            }
+        }
+
+        &-arrow {
+            position: absolute;
+            width: 7px;
+            height: 7px;
+            transform: rotate(45deg);
+            right: 10px;
+            transform-origin: 65% 65%;
+            border-right: 2px solid #1d1d1b;
+            border-bottom: 2px solid #1d1d1b;
+            transition: 0.5s ease-in-out;
+
+            &.open {
+                transform: rotate(225deg);
+            }
+        }
+    }
+
+    &__btn {
+        width: 202px;
+        min-height: 64px;
+        background-color: $btn-bg-color;
+        padding: 6px 32px;
+        @include font(24px, 400);
+        line-height: 26px;
+        color: $main-bg-color;
+        border-radius: 4px;
+        transition: 0.4s;
+        margin: 0 0 17px 0;
+
+        &:hover {
+            background-color: #e13140;
+        }
+    }
+
+    &__total {
+        display: flex;
+        margin: 0 0 0 11px;
+    }
+
+    &__price {
+        color: $heading-text-color;
+        display: flex;
+        flex-direction: column;
+        &-base {
+            display: flex;
+            @include font(16px);
+            opacity: 0.6;
+            text-decoration: line-through;
+        }
+
+        &-discount {
+            letter-spacing: -0.03em;
+            @include font(21px, 700);
+
+            &-number {
+                @include font(48px, 700);
+
+                & sup {
+                    @include font(21px, 700);
+                    position: relative;
+                    top: -3px;
+                    letter-spacing: -0.01em;
+                }
+            }
+        }
+    }
+
+    &__checkup {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__renewal {
+        @include font(16px, 300);
+        color: $renewal-text-color;
+
+        & a {
+            display: inline-block;
+            position: relative;
+            top: -2px;
+            left: 7px;
+            text-align: center;
+            width: 15px;
+            height: 15px;
+            font-size: 14px;
+            color: $renewal-question-color;
+            border: 1px solid $renewal-question-color;
+            border-radius: 50%;
+        }
+
+    }
+
+    &__checkbox {
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+
+        &+label {
+            display: inline-flex;
+            align-items: center;
+            user-select: none;
+
+            &::before {
+                content: '';
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                flex-shrink: 0;
+                flex-grow: 0;
+                border-radius: 3px;
+                margin-right: 8px;
+                background-color: $checkbox-bg-color;
+            }
+        }
+
+        &:checked+label::before {
+            background-image: url("../assets/checked.svg");
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+    }
+}
+
+.buy{
+    width: 922px;
+    min-height: 156px;
+    margin: 40px 0 0 0;
+    position: relative;
+    padding: 16px;
+    &::before {
+        content: "Save 25%";
+        @include font(21px, 700);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 285px;
+        height: 40px;
+        background-color: $discount-sticky-bg-color;
+        position: absolute;
+        top: -40px;
+        left: 423px;
+    }
+    &__divider {
+       margin: 0 2px 0 8px;
+    }
+    &__price{
+        align-items: flex-end;
+        margin: 0 16px 0 0;
+        width: 240px;
+        &-base{
+            margin: 0 0 23px 0;
+        }
+    }
+}

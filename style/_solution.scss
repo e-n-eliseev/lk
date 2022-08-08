@@ -1,0 +1,108 @@
+.solution {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    &__info {
+        width: 571px;
+    }
+
+    &__heading {
+        display: flex;
+        align-items: flex-end;
+
+        &-logo {
+            margin-right: 9px;
+        }
+
+        &-heading {
+            @include font(21px, 700);
+            margin-bottom: 8px;
+            color: $heading-text-color;
+        }
+
+        &-rating {
+            display: flex;
+            align-items: center;
+
+            &-quantity {
+                @include font(16px, 300);
+            }
+        }
+
+        &-stars {
+            display: flex;
+            margin-right: 4px;
+
+            & li {
+                margin: 0 2.5px;
+            }
+        }
+    }
+
+    &__description {
+        margin: 24px 0 0;
+
+        &-heading {
+            @include font(40px, 700);
+            line-height: 48px;
+            color: $heading-text-color;
+
+            &>span {
+                font-weight: 300;
+            }
+        }
+
+        &-text {
+            margin: 24px 0;
+            @include font(18px);
+            line-height: 22px;
+            color: $text-color;
+            position: relative;
+
+            &::before {
+                content: "";
+                position: absolute;
+                width: 55px;
+                height: 1px;
+                background-color: $divider-color;
+                top: -4px;
+            }
+        }
+
+        &-details {
+            & li {
+                @include font(18px, 400);
+                margin: 0 0 8px 0;
+                display: flex;
+
+                & span {
+                    font-weight: 300;
+                }
+
+                &::before {
+                    content: url("../assets/done.svg");
+                    margin: -1px 8px 0 0;
+                }
+            }
+        }
+
+        &-os {
+            @include font(14px, 400);
+            line-height: 17px;
+            margin: 24px 0 0 0;
+            position: relative;
+
+            & sup {
+                font-size: 9px;
+                position: absolute;
+                top: -2px;
+            }
+
+            & span {
+                color: $divider-os-color;
+                margin: 0 5px 0 13px;
+            }
+        }
+    }
+}

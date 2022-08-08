@@ -1,0 +1,70 @@
+.sticky{
+    position: fixed;
+    top: 0;
+    &__btn{
+        @extend %hidden;
+        height: 0;
+        width: 360px;
+        //height: 40px;
+        border-radius: 12px 12px 0 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &-icon{
+            height: 17px;
+            position: relative;
+            transform-origin: 65% 65%;
+            transition: 0.5s ease-in-out;
+            &.open {
+                transform: rotate(225deg);
+            }
+        }
+        &-arrow {
+            position: absolute;
+            width: 7px;
+            height: 7px;
+            transform: rotate(225deg);
+            border-right: 2px solid #1d1d1b;
+            border-bottom: 2px solid #1d1d1b;
+        }
+        &-lines {
+            position: absolute;
+            width: 15px;
+            height: 2px;
+            top: 7px;
+            left: -4px;
+            background-color: #1d1d1b;
+            box-shadow: 0 5px #1d1d1b ;
+        }
+    }
+    &-body{
+        width: 1108px;
+        min-height: 140px;
+        background-color: #FFFFFF;
+        padding: 8px 36px;
+        &__divider{
+            margin: 0 21px 0 16px;
+        }
+        &__price{
+            align-items: center;
+            margin: 0 8px;
+            width: 275px;
+            &-base{
+                margin: 8px 0 10px 0;
+            }
+            &-discount-amount{
+                width: 178px;
+                min-height: 28px;
+                border-radius: 24px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: $discount-bg-color;
+                text-transform: uppercase;
+                @include font(16px,700);
+                color: #000000;
+            }
+        }
+    }
+    
+}

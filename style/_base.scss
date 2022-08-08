@@ -1,0 +1,44 @@
+body {
+    display: grid;
+    grid-template-rows: 428px minmax(1305px, auto) 1fr;
+}
+
+.main {
+    grid-row: 2/3;
+    display: grid;
+    grid-template-columns: 1fr minmax(auto, 1920px) 1fr;
+}
+
+.wrapper {
+    grid-column: 2/3;
+    outline: 10px solid $main-border-color;
+    padding: 132px 0 275px;
+}
+
+.content {
+    padding: 8px 380px;
+    min-height: 898px;
+    background: url("../assets/pc.svg"),
+        linear-gradient(360deg, #FFFFFF 26.36%, rgba(255, 255, 255, 0.64) 114.64%);
+    background-repeat: no-repeat;
+    background-position-x: 89%;
+}
+
+.navigation {
+    font-family: 'Mulish', sans-serif;
+    @include font(12px, 300);
+    margin: 0 0 24px 0;
+}
+
+.breadcrumb {
+    display: flex;
+
+    & a {
+        color: $text-color;
+    }
+
+    &>li+li:before {
+        padding: 0 17px;
+        content: ">";
+    }
+}

@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@100;400;700&family=Mulish:wght@300&family=Noto+Serif:wght@700&family=Roboto:wght@400;500;700;900&display=swap');
+
+@font-face {
+    font-family: "MuseoSans";
+    src: url("../font/MuseoSansLight.eot");
+    src: url("../font/MuseoSansLight.eot?#iefix")format("embedded-opentype"),
+        url("../font/MuseoSansLight.woff") format("woff"),
+        url("../font/MuseoSansLight.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: "MuseoSans";
+    src: url("../font/MuseoSansRegular.eot");
+    src: url("../font/MuseoSansRegular.eot?#iefix")format("embedded-opentype"),
+        url("../font/MuseoSansRegular.woff") format("woff"),
+        url("../font/MuseoSansRegular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "MuseoSans";
+    src: url("../font/MuseoSansBold.eot");
+    src: url("../font/MuseoSansBold.eot?#iefix")format("embedded-opentype"),
+        url("../font/MuseoSansBold.woff") format("woff"),
+        url("../font/MuseoSansBold.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 700;
+}
