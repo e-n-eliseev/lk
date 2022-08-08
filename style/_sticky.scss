@@ -1,15 +1,21 @@
 .sticky{
     position: fixed;
     top: 0;
+    display: grid;
+    grid-template-columns: 1fr 1108px 1fr;
+    &__wrapper{
+        grid-column: 2/3;
+    }
     &__btn{
-        @extend %hidden;
-        height: 0;
-        width: 360px;
-        //height: 40px;
+        display: none;
+        margin: 0 0 -1px 0;
+        width: 312px;
+        height: 40px;
         border-radius: 12px 12px 0 0;
-        display: flex;
         align-items: center;
         justify-content: center;
+        box-shadow: 0px 8px 24px rgba(29, 29, 27, 0.08);
+        background-color: $main-bg-color;
         &-icon{
             height: 17px;
             position: relative;
@@ -38,10 +44,24 @@
         }
     }
     &-body{
-        width: 1108px;
+        //@extend %hidden;
         min-height: 140px;
         background-color: #FFFFFF;
         padding: 8px 36px;
+        &__discount{
+            display: none;
+            margin: 0 0 -1px 0;
+            width:100%;
+            min-height: 28px;
+            align-items: center;
+            justify-content: center;
+            background-color: $discount-bg-color;
+            @include font(16px,700);
+            color: #000000;
+        }
+        &__product{
+            align-items: center;
+        }
         &__divider{
             margin: 0 21px 0 16px;
         }
@@ -67,4 +87,143 @@
         }
     }
     
+}
+
+@media (max-width:1250px) {
+    .sticky{
+        grid-template-columns: 1fr 720px 1fr;
+        &-body{
+            padding: 8px 16px;
+            &__form{
+                align-items: flex-start;
+            }
+            &__product,&__divider{
+                display: none;
+        }
+        &__total{
+            margin: 0;
+            justify-content: space-between;
+            flex-grow: 1;
+        }
+        &__price{
+            margin: 0;
+            flex-grow: 1;
+        }
+        &__conditions{
+            flex-direction: column;
+        }
+        &__checkup{
+            margin-top: 12px;
+        }
+        &__users,&__years{
+            display: flex;
+            padding-top: 0;
+            margin: 0;
+            &-heading{
+                align-self: center;
+            }
+        }
+        &__users{
+            margin: 0 0 22px 0;
+            &-select{
+                margin: 0 0 0 24px;
+            }
+            &-heading{
+                margin: 0 0 20px 0;
+            }
+            &-text{
+                top: 30px;
+            }
+        }
+        &__years{
+            &-select{
+                margin: 0 0 0 26px;
+            }
+        }
+    }
+    }
+}
+
+@media (max-width:830px){
+    .sticky{
+        grid-template-columns: 1fr 312px 1fr;
+        top: auto;
+        bottom: 0;
+        &__btn{
+            display: flex;
+        }
+       
+        &-body{
+            padding: 16px;
+            &__btn{
+                width: 264px;
+            }
+            &__discount{
+                display: flex;
+            }
+            &__price{
+                &-discount{
+                    @include font(16px,400);
+                    &-number{
+                        @include font(30px,700);
+                        & sup{
+                            @include font(14px,700);
+                        }
+                    }
+                }
+            }
+            
+            &__price-discount-amount{
+                display: none;
+            }
+            &__form{
+                flex-direction: column;
+            }
+            &__product{
+                display: flex;
+            }
+            &__divider{
+                display: block;
+                width: 100%;
+                height: 1px;
+                margin: 24px 0 16px;
+            }
+            &__conditions{
+                width: 100%;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            &__users,
+            &__years{
+                flex-direction: column;
+                &-heading{
+                    align-self: flex-start;
+                }
+                &-trigger{
+                    width: 101px;
+                }
+            }
+            &__users{
+                margin: 0 0 61px 0;
+                &-select{
+                    margin:0;
+                }
+                &-heading{
+                    margin: 0 0 9px 0;
+                }
+                &-text{
+                    top: 80px;
+                }
+            }
+            &__years{
+                &-select{
+                    margin: 0;
+                }
+            }
+            &__total{
+                flex-direction: column;
+            }
+        }
+    
+    }
 }

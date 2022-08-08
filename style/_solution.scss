@@ -16,8 +16,11 @@
         }
 
         &-heading {
+            & br{
+                display: none;
+            }
             @include font(21px, 700);
-            margin-bottom: 8px;
+            margin-bottom: 3px;
             color: $heading-text-color;
         }
 
@@ -27,6 +30,7 @@
 
             &-quantity {
                 @include font(16px, 300);
+                line-height: 20px;
             }
         }
 
@@ -44,6 +48,7 @@
         margin: 24px 0 0;
 
         &-heading {
+
             @include font(40px, 700);
             line-height: 48px;
             color: $heading-text-color;
@@ -76,7 +81,7 @@
                 margin: 0 0 8px 0;
                 display: flex;
 
-                & span {
+                & span span {
                     font-weight: 300;
                 }
 
@@ -104,5 +109,51 @@
                 margin: 0 5px 0 13px;
             }
         }
+    }
+}
+
+@media (max-width:1250px) {
+    .solution {
+        &__description {
+            margin: 22px 0 0;
+            width: 465px;
+            &-os{
+                margin: 48px 0 0;
+            }
+        }
+    }
+}
+@media (max-width:830px){
+    .solution{
+        &__info{
+            width: 312px;
+            padding: 32px 0 48px;
+        }
+        &__description {
+            margin: 32px 0 0;
+            width: 312px;
+            &-heading{
+                @include font(32px,700);
+                line-height: 36px;
+            }
+            &-details li {
+                @include font(16px,400);
+                line-height: 20px;
+            }
+        }
+        &__heading{
+
+            &-stars li svg{
+                height: 11px;
+                width: 11px;
+            }
+            &-heading{
+            & br{
+                display: block;
+            }
+            @include font(18px,700);
+            line-height: 22px;
+        }
+    }
     }
 }

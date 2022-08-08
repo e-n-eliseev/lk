@@ -1,0 +1,45 @@
+.links {
+    display: flex;
+    &__link {
+        @include font(17px, 400);
+        line-height: 24px;
+        margin: 0 0 0 22px;
+        padding: 0 22px 0 0;
+    
+        & a {
+            color: $heading-text-color;
+        }
+    
+        border-right: 2px solid rgba(29, 29, 27, 0.2);
+        ;
+    
+        &:last-child {
+            padding: 0;
+            border: none;
+        }
+    }
+}
+
+@media (max-width:1250px){
+    .links{
+        flex-wrap: wrap;
+        &__link{
+            margin: 0;
+            padding: 0 24px 0 0;
+            border: none;
+            &:first-child {
+                border-right: 2px solid rgba(29, 29, 27, 0.2);
+                ;
+            }
+            &:nth-child(2){
+                padding: 0 0 0 24px;
+            }
+        }
+    }
+}
+@media (max-width:830px){
+    .links{
+        align-items: center;
+        justify-content: center;
+    }
+}

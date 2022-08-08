@@ -1,0 +1,152 @@
+.options {
+    display: flex;
+    align-items: center;
+
+    &__text {
+        @include font(17px, 400);
+        display: flex;
+        line-height: 24px;
+        color: $heading-text-color;
+        margin: 0 34px 0 0;
+    }
+
+    &__button {
+        margin: 4px 0 0 8px;
+        background-color: transparent;
+        width: 16px;
+        height: 16px;
+        font-size: 12px;
+        color: #636938;
+        border: 1px solid #666666;
+        border-radius: 50%;
+    }
+
+    &__pop-up {
+        width: 208px;
+        height: 132px;
+        box-shadow: 0px 4px 20px rgba(92, 133, 150, 0.24);
+        border-radius: 4px;
+        position: absolute;
+        background-color: $main-bg-color;
+        left: 200px;
+        padding: 16px 0 16px 16px;
+        transition: 0.5s ease-in-out;
+        @extend %hidden;
+
+        &.open {
+            @extend %open;
+        }
+
+        &-info {
+            @include font(16px, 300);
+            color: $heading-text-color;
+            line-height: 19px;
+
+            & li::before {
+                position: absolute;
+                width: 16px;
+                left: 15px;
+
+            }
+
+            & li {
+                margin: 0 0 8px 30px;
+            }
+
+            & li:nth-child(1)::before {
+                content: url("../assets/users.svg");
+
+            }
+
+            & li:nth-child(2)::before {
+                content: url("../assets/server.svg");
+            }
+
+            & li:nth-child(3)::before {
+                content: url("../assets//mobile.svg");
+            }
+
+            & li:nth-child(4)::before {
+                content: url("../assets/pass.svg");
+            }
+
+            & span {
+                font-weight: 700;
+            }
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-top: 9px solid transparent;
+            border-right: 9px solid $main-bg-color;
+            border-bottom: 9px solid transparent;
+            top: 43%;
+            left: -9px;
+        }
+    }
+
+    &__info {
+        display: flex;
+
+        & li {
+            @include font(16px);
+            line-height: 28px;
+            margin: 0 34px 0 0;
+            position: relative;
+        }
+
+        & li::before {
+            position: absolute;
+            top: 3px;
+            left: -23px;
+
+        }
+
+        & li:nth-child(1)::before {
+            content: url("../assets/users.svg");
+        }
+
+        & li:nth-child(2)::before {
+            content: url("../assets/server.svg");
+        }
+
+        & li:nth-child(3)::before {
+            content: url("../assets/mobile.svg");
+        }
+
+        & li:nth-child(4)::before {
+            content: url("../assets/pass.svg");
+        }
+
+    }
+}
+
+@media (max-width:1250px) {
+    .options {
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 12px 0;
+
+        &__text {
+            margin: 0 0 5px 0;
+        }
+
+        &__info {
+            margin: 0 0 0 23px;
+        }
+    }
+}
+
+@media (max-width:830px) {
+    .options {
+        align-items: center;
+        margin: 16px 0;
+
+        &__info li:last-child {
+            margin: 0;
+        }
+    }
+}
