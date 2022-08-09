@@ -1,51 +1,33 @@
 "use strict";
-
+//определяем переменные
 const item = document.querySelector(".sticky-body");
 const btn = document.querySelector(".sticky__btn");
 const btnBody = document.querySelector(".sticky-body__btn");
-let buyIntersection = true;
-let bottomIntrsection = true;
-
+let a = true;
+let b = true;
 //описываем опции наблюдателя
 const options = {
     threshold: 0
 }
-//колбэк наблюдателя
-const show = (element) => {
-    element.style.opacity = "1";
-    element.style.visibility = "visible";
-    element.style.pointerEvents = "all";
-}
-const hide = (element) => {
-    element.style.opacity = "0";
-    element.style.visibility = "hidden";
-    element.style.pointerEvents = "none";
-}
 const callback1 = () => {
-    if (buyIntersection) {
-        buyIntersection = false;
-        return;
+    if (a) {
+        if (b) {
+            b = false;
+            return;
+        }
+        a = false;
+        return
     }
-    if (item.style.opacity === "0") {
-        show(item);
-        show(btn);
-    } else {
-        hide(item);
-        hide(btn);
-    }
+    btn.classList.toggle("sticky__btn--open");
+    item.classList.toggle("sticky-body--open");
 }
 const callback2 = () => {
-
     if (window.screen.width < 830) {
-        if (item.style.opacity === "1") {
-            hide(item);
-            hide(btn);
-        } else {
-            show(item);
-            show(btn);
-        }
+        btn.classList.toggle("sticky__btn--open");
+        item.classList.toggle("sticky-body--open");
     }
 }
+
 
 //создаем наблюдатель
 let observer1 = new IntersectionObserver(callback1, options);
@@ -108,4 +90,13 @@ btn.addEventListener("click", () => {
 
 window.addEventListener('scroll', () => {
     document.documentElement.style.setProperty('--scroll-y', `${window.scrollY}px`);
+});
+window.addEventListener('resize', () => {
+    console.log("@@")
+    btn.classList.remove("sticky__btn--open");
+    item.classList.remove("sticky-body--open");
+});
+window.addEventListener('load', () => {
+    btn.classList.remove("sticky__btn--open");
+    item.classList.remove("sticky-body--open");
 });

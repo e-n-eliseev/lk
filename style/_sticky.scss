@@ -8,7 +8,11 @@
         grid-column: 2/3;
     }
     &__btn{
-        @extend %hidden;
+        //@extend %hidden;
+        &--open{
+            @extend %hidden;
+            //@extend %open;
+        }
         display: flex;
         margin: 0 0 -1px 0;
         width: 312px;
@@ -50,6 +54,10 @@
         background-color: #FFFFFF;
         padding: 8px 36px;
         transition: 0.5s ease-in-out;
+        &--open{
+
+            @extend %open;
+        }
         &__discount{
             display: none;
             margin: 0 0 -1px 0;
@@ -154,7 +162,17 @@
         grid-template-columns: 1fr 312px 1fr;
         top: auto;
         bottom: 0;
-      
+        &__btn{
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            &--open{
+                opacity: 1;
+                visibility: visible;
+                pointer-events: all;
+
+            }
+        }
         &-body{
             padding: 0;
             &__btn{

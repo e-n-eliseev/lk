@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@100;400;700&family=Mulish:wght@300&family=Noto+Serif:wght@700&family=Roboto:wght@400;500;700;900&display=swap");
-.sticky-body, .sticky__btn, .options__pop-up, .buy__users-options, .buy__years-options,
+.sticky-body, .sticky__btn--open, .options__pop-up, .buy__users-options, .buy__years-options,
 .sticky-body__users-options,
 .sticky-body__years-options {
   opacity: 0;
@@ -7,7 +7,7 @@
   pointer-events: none;
 }
 
-.options__pop-up.open, .buy__users-select.open .buy__years-options, .buy__users-select.open .sticky-body__years-options, .buy__years-select.open .buy__years-options, .buy__years-select.open .sticky-body__years-options,
+.sticky-body--open, .options__pop-up.open, .buy__users-select.open .buy__years-options, .buy__users-select.open .sticky-body__years-options, .buy__years-select.open .buy__years-options, .buy__years-select.open .sticky-body__years-options,
 .sticky-body__users-select.open .buy__years-options,
 .sticky-body__users-select.open .sticky-body__years-options,
 .sticky-body__years-select.open .buy__years-options,
@@ -534,7 +534,7 @@ body {
 .sticky-body__users-select,
 .sticky-body__years-select {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 .buy__users-trigger, .buy__years-trigger,
 .sticky-body__users-trigger,
@@ -948,7 +948,7 @@ body {
     margin: 24px 0 16px;
   }
   .buy__users-select, .buy__years-select {
-    z-index: auto;
+    z-index: 1;
   }
   .buy__users-trigger, .buy__years-trigger {
     width: 101px;
@@ -1455,6 +1455,16 @@ body {
     grid-template-columns: 1fr 312px 1fr;
     top: auto;
     bottom: 0;
+  }
+  .sticky__btn {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  .sticky__btn--open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
   }
   .sticky-body {
     padding: 0;

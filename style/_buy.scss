@@ -69,7 +69,7 @@
 
         &-select {
             position: relative;
-            z-index: 1;
+            z-index: 2;
 
             &.open .buy__users-options,
             &.open .sticky-body__users-options {
@@ -404,7 +404,7 @@
         &__users,
         &__years{
             &-select{
-                z-index: auto;
+                z-index: 1;
             }
             &-trigger{
                 width: 101px;
