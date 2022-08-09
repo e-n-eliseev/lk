@@ -38,9 +38,9 @@ const dropDown = (current) => {
     document.querySelector(`${current}-trigger`).addEventListener('click', () => {
         if (current === ".buy__users" || current === ".sticky-body__users") {
             const userMenu = document.querySelector(`${current}-select`);
-            userMenu.style.zIndex === "2"
+            userMenu.style.zIndex === "3"
                 ? userMenu.style.zIndex = "1"
-                : userMenu.style.zIndex = "2";
+                : userMenu.style.zIndex = "3";
         }
         document.querySelector(`${current}-select`).classList.toggle('open');
         document.querySelector(`${current}-arrow`).classList.toggle('open');
