@@ -1,6 +1,10 @@
+"use strict";
+
 const item = document.querySelector(".sticky-body");
 const btn = document.querySelector(".sticky__btn");
 const btnBody = document.querySelector(".sticky-body__btn");
+let buyIntersection = true;
+let bottomIntrsection = true;
 
 //описываем опции наблюдателя
 const options = {
@@ -18,6 +22,10 @@ const hide = (element) => {
     element.style.pointerEvents = "none";
 }
 const callback1 = () => {
+    if (buyIntersection) {
+        buyIntersection = false;
+        return;
+    }
     if (item.style.opacity === "0") {
         show(item);
         show(btn);
@@ -29,12 +37,12 @@ const callback1 = () => {
 const callback2 = () => {
 
     if (window.screen.width < 830) {
-        if (item.style.opacity === "0") {
-            show(item);
-            show(btn);
-        } else {
+        if (item.style.opacity === "1") {
             hide(item);
             hide(btn);
+        } else {
+            show(item);
+            show(btn);
         }
     }
 }

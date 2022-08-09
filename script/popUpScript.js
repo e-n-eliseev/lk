@@ -1,5 +1,5 @@
 //скрипт открывающий окно с информацией о содержании продукта
-
+"use strict";
 //определяем переменные
 const popUpBtn = document.querySelectorAll(".options__button");
 const popUpWindow = document.querySelectorAll(".options__pop-up");
