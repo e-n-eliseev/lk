@@ -1,7 +1,7 @@
 .options {
     display: flex;
     align-items: center;
-
+    position: relative;
     &__text {
         @include font(17px, 400);
         display: flex;
@@ -28,7 +28,7 @@
         border-radius: 4px;
         position: absolute;
         background-color: $main-bg-color;
-        left: 200px;
+        left: 190px;
         padding: 16px 0 16px 16px;
         transition: 0.5s ease-in-out;
         @extend %hidden;
@@ -45,12 +45,12 @@
             & li::before {
                 position: absolute;
                 width: 16px;
-                left: 15px;
+                left: 13px;
 
             }
 
             & li {
-                margin: 0 0 8px 30px;
+                margin: 0 0 8px 27px;
             }
 
             & li:nth-child(1)::before {
@@ -107,6 +107,8 @@
 
         & li:nth-child(1)::before {
             content: url("../assets/users.svg");
+            width: 16px;
+            height: 16px;
         }
 
         & li:nth-child(2)::before {
@@ -130,6 +132,17 @@
         align-items: flex-start;
         margin: 12px 0;
 
+        &__pop-up {
+            left: -15px;
+            top: -140px;
+
+            &::before {
+                top: 97%;
+                left: 175px;
+                transform: rotate(-90deg);
+            }
+        }
+
         &__text {
             margin: 0 0 5px 0;
         }
@@ -144,6 +157,9 @@
     .options {
         align-items: center;
         margin: 16px 0;
+        &__pop-up {
+            left: 18px;
+        }
 
         &__info li:last-child {
             margin: 0;

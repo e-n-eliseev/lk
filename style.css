@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@100;400;700&family=Mulish:wght@300&family=Noto+Serif:wght@700&family=Roboto:wght@400;500;700;900&display=swap");
-.options__pop-up, .buy__users-options, .buy__years-options,
+.sticky-body, .sticky__btn, .options__pop-up, .buy__users-options, .buy__years-options,
 .sticky-body__users-options,
 .sticky-body__years-options {
   opacity: 0;
@@ -7,11 +7,15 @@
   pointer-events: none;
 }
 
-.options__pop-up.open, .buy__users-select.open .buy__years-options, .buy__years-select.open .buy__years-options,
+.options__pop-up.open, .buy__users-select.open .buy__years-options, .buy__users-select.open .sticky-body__years-options, .buy__years-select.open .buy__years-options, .buy__years-select.open .sticky-body__years-options,
 .sticky-body__users-select.open .buy__years-options,
-.sticky-body__years-select.open .buy__years-options, .buy__users-select.open .buy__users-options, .buy__years-select.open .buy__users-options,
+.sticky-body__users-select.open .sticky-body__years-options,
+.sticky-body__years-select.open .buy__years-options,
+.sticky-body__years-select.open .sticky-body__years-options, .buy__users-select.open .buy__users-options, .buy__users-select.open .sticky-body__users-options, .buy__years-select.open .buy__users-options, .buy__years-select.open .sticky-body__users-options,
 .sticky-body__users-select.open .buy__users-options,
-.sticky-body__years-select.open .buy__users-options {
+.sticky-body__users-select.open .sticky-body__users-options,
+.sticky-body__years-select.open .buy__users-options,
+.sticky-body__years-select.open .sticky-body__users-options {
   opacity: 1;
   visibility: visible;
   pointer-events: all;
@@ -129,9 +133,29 @@ body {
 }
 
 .main {
+  flex-grow: 1;
   grid-row: 2/3;
   display: grid;
   grid-template-columns: 1fr minmax(auto, 1920px) 1fr;
+}
+
+.main-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.bottom {
+  width: 100%;
+  padding: 10px;
+}
+
+.cover {
+  display: none;
+  width: 100%;
+  height: 1000%;
+  position: fixed;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .wrapper {
@@ -416,7 +440,7 @@ body {
           user-select: none;
   height: 48px;
   align-self: start;
-  padding-top: 19px;
+  padding-top: 15px;
 }
 .buy__users-heading, .buy__years-heading,
 .sticky-body__users-heading,
@@ -432,7 +456,7 @@ body {
   font-size: 16px;
   color: #999999;
   position: absolute;
-  top: 101px;
+  top: 95px;
 }
 .buy__users-select, .buy__years-select,
 .sticky-body__users-select,
@@ -465,7 +489,7 @@ body {
   border: 1.5px solid #23D1AE;
   border-radius: 4px;
   background: #FFFFFF;
-  transition: all 0.5s;
+  transition: all 0.2s;
 }
 .buy__users-option, .buy__years-option,
 .sticky-body__users-option,
@@ -476,7 +500,7 @@ body {
   min-height: 48px;
   padding: 5px;
   cursor: pointer;
-  transition: all 0.5s;
+  transition: all 0.2s;
 }
 .buy__users-option:hover, .buy__years-option:hover,
 .sticky-body__users-option:hover,
@@ -555,6 +579,13 @@ body {
 .sticky-body__price-discount-number {
   font-weight: 700;
   font-size: 48px;
+}
+.buy__price-discount-number--small,
+.sticky-body__price-discount-number--small {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 30px;
+  margin-bottom: 18px;
 }
 .buy__price-discount-number sup,
 .sticky-body__price-discount-number sup {
@@ -756,6 +787,9 @@ body {
     height: 1px;
     margin: 24px 0 16px;
   }
+  .buy__users-select, .buy__years-select {
+    z-index: auto;
+  }
   .buy__users-trigger, .buy__years-trigger {
     width: 101px;
   }
@@ -830,6 +864,7 @@ body {
 .options {
   display: flex;
   align-items: center;
+  position: relative;
 }
 .options__text {
   font-weight: 400;
@@ -856,7 +891,7 @@ body {
   border-radius: 4px;
   position: absolute;
   background-color: #FFFFFF;
-  left: 200px;
+  left: 190px;
   padding: 16px 0 16px 16px;
   transition: 0.5s ease-in-out;
 }
@@ -869,10 +904,10 @@ body {
 .options__pop-up-info li::before {
   position: absolute;
   width: 16px;
-  left: 15px;
+  left: 13px;
 }
 .options__pop-up-info li {
-  margin: 0 0 8px 30px;
+  margin: 0 0 8px 27px;
 }
 .options__pop-up-info li:nth-child(1)::before {
   content: url("../assets/users.svg");
@@ -917,6 +952,8 @@ body {
 }
 .options__info li:nth-child(1)::before {
   content: url("../assets/users.svg");
+  width: 16px;
+  height: 16px;
 }
 .options__info li:nth-child(2)::before {
   content: url("../assets/server.svg");
@@ -934,6 +971,15 @@ body {
     align-items: flex-start;
     margin: 12px 0;
   }
+  .options__pop-up {
+    left: -15px;
+    top: -140px;
+  }
+  .options__pop-up::before {
+    top: 97%;
+    left: 175px;
+    transform: rotate(-90deg);
+  }
   .options__text {
     margin: 0 0 5px 0;
   }
@@ -945,6 +991,9 @@ body {
   .options {
     align-items: center;
     margin: 16px 0;
+  }
+  .options__pop-up {
+    left: 18px;
   }
   .options__info li:last-child {
     margin: 0;
@@ -993,15 +1042,16 @@ body {
 }
 .sticky {
   position: fixed;
-  top: 0;
+  top: -40px;
   display: grid;
   grid-template-columns: 1fr 1108px 1fr;
+  z-index: 3;
 }
 .sticky__wrapper {
   grid-column: 2/3;
 }
 .sticky__btn {
-  display: none;
+  display: flex;
   margin: 0 0 -1px 0;
   width: 312px;
   height: 40px;
@@ -1014,11 +1064,11 @@ body {
 .sticky__btn-icon {
   height: 17px;
   position: relative;
-  transform-origin: 65% 65%;
+  transform-origin: 25%;
   transition: 0.5s ease-in-out;
 }
 .sticky__btn-icon.open {
-  transform: rotate(225deg);
+  transform: rotate(180deg);
 }
 .sticky__btn-arrow {
   position: absolute;
@@ -1038,9 +1088,9 @@ body {
   box-shadow: 0 5px #1d1d1b;
 }
 .sticky-body {
-  min-height: 140px;
   background-color: #FFFFFF;
   padding: 8px 36px;
+  transition: 0.5s ease-in-out;
 }
 .sticky-body__discount {
   display: none;
@@ -1088,6 +1138,9 @@ body {
   }
   .sticky-body {
     padding: 8px 16px;
+  }
+  .sticky-body__discount {
+    display: none;
   }
   .sticky-body__form {
     align-items: flex-start;
@@ -1140,17 +1193,18 @@ body {
     top: auto;
     bottom: 0;
   }
-  .sticky__btn {
-    display: flex;
-  }
   .sticky-body {
-    padding: 16px;
+    padding: 0;
   }
   .sticky-body__btn {
-    width: 264px;
+    width: 312px;
+    min-height: 40px;
   }
-  .sticky-body__discount {
-    display: flex;
+  .sticky-body__checkup label {
+    display: none;
+  }
+  .sticky-body__price {
+    display: none;
   }
   .sticky-body__price-discount {
     font-weight: 400;
@@ -1171,15 +1225,16 @@ body {
     flex-direction: column;
   }
   .sticky-body__product {
-    display: flex;
+    display: none;
   }
   .sticky-body__divider {
-    display: block;
+    display: none;
     width: 100%;
     height: 1px;
     margin: 24px 0 16px;
   }
   .sticky-body__conditions {
+    display: none;
     width: 100%;
     flex-direction: row;
     justify-content: space-between;

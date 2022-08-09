@@ -53,7 +53,7 @@
         user-select: none;
         height: 48px;
         align-self: start;
-        padding-top: 19px;
+        padding-top: 15px;
 
         &-heading {
             @include font(18px, 400);
@@ -64,18 +64,20 @@
             @include font(16px, 400);
             color: $divider-os-color;
             position: absolute;
-            top: 101px;
+            top: 95px;
         }
 
         &-select {
             position: relative;
             z-index: 1;
 
-            &.open .buy__users-options {
+            &.open .buy__users-options,
+            &.open .sticky-body__users-options {
                 @extend %open;
             }
 
-            &.open .buy__years-options {
+            &.open .buy__years-options,
+            &.open .sticky-body__years-options {
                 @extend %open;
             }
         }
@@ -100,7 +102,7 @@
             border: 1.5px solid #23D1AE;
             border-radius: 4px;
             background: $main-bg-color;
-            transition: all 0.5s;
+            transition: all 0.2s;
             @extend %hidden;
         }
 
@@ -111,7 +113,7 @@
             min-height: 48px;
             padding: 5px;
             cursor: pointer;
-            transition: all 0.5s;
+            transition: all 0.2s;
 
             &:hover {
                 background-color: $divider-buy-color;
@@ -122,7 +124,6 @@
                 background-color: $checkbox-bg-color;
             }
         }
-
         &-arrow {
             position: absolute;
             width: 7px;
@@ -181,7 +182,11 @@
 
             &-number {
                 @include font(48px, 700);
-
+                &--small{
+                    display: inline-block;
+                    @include font(30px, 700);
+                    margin-bottom: 18px;
+                }
                 & sup {
                     @include font(21px, 700);
                     position: relative;
@@ -398,6 +403,9 @@
         }
         &__users,
         &__years{
+            &-select{
+                z-index: auto;
+            }
             &-trigger{
                 width: 101px;
             }
