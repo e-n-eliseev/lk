@@ -100,15 +100,19 @@ btn.addEventListener("click", () => {
 window.addEventListener('scroll', () => {
     document.documentElement.style.setProperty('--scroll-y', `${window.scrollY}px`);
 });
-window.addEventListener('resize', () => {
-    a = true;
-    b = false;
-    btn.classList.remove("sticky__btn--open");
-    item.classList.remove("sticky-body--open");
-});
-window.addEventListener('load', () => {
-    a = true;
-    b = false;
-    btn.classList.remove("sticky__btn--open");
-    item.classList.remove("sticky-body--open");
-});
+if (window.screen.width > 830) {
+    window.addEventListener('resize', () => {
+        a = true;
+        b = false;
+        window.scrollTo(0, 0);
+        btn.classList.remove("sticky__btn--open");
+        item.classList.remove("sticky-body--open");
+    });
+    window.addEventListener('load', () => {
+        a = true;
+        b = false;
+        window.scrollTo(0, 0);
+        btn.classList.remove("sticky__btn--open");
+        item.classList.remove("sticky-body--open");
+    });
+}
