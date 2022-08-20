@@ -5,27 +5,36 @@ const btn = document.querySelector(".sticky__btn");
 const btnBody = document.querySelector(".sticky-body__btn");
 let a = true;
 let b = true;
+
 //описываем опции наблюдателя
 const options = {
     threshold: 0
 }
 const callback1 = () => {
     if (a) {
-        if (b) {
-            b = false;
-            return;
-        }
-        a = false;
-        return
+        btn.classList.remove("sticky__btn--open");
+        item.classList.remove("sticky-body--open");
+    } else {
+        btn.classList.add("sticky__btn--open");
+        item.classList.add("sticky-body--open");
     }
-    btn.classList.toggle("sticky__btn--open");
-    item.classList.toggle("sticky-body--open");
+    a = !a;
 }
 const callback2 = () => {
-    if (window.screen.width < 830) {
-        btn.classList.toggle("sticky__btn--open");
-        item.classList.toggle("sticky-body--open");
+    if (a) {
+        if (window.screen.width < 830) {
+            btn.classList.remove("sticky__btn--open");
+            item.classList.remove("sticky-body--open");
+            if (!b) {
+                btn.classList.remove("sticky__btn--open");
+                item.classList.remove("sticky-body--open");
+            } else {
+                btn.classList.add("sticky__btn--open");
+                item.classList.add("sticky-body--open");
+            }
+        }
     }
+    b = !b;
 }
 
 
@@ -92,11 +101,16 @@ window.addEventListener('scroll', () => {
     document.documentElement.style.setProperty('--scroll-y', `${window.scrollY}px`);
 });
 window.addEventListener('resize', () => {
-    console.log("@@")
+    a = true;
+    b = false;
+    window.scrollTo(0, 0);
     btn.classList.remove("sticky__btn--open");
     item.classList.remove("sticky-body--open");
 });
 window.addEventListener('load', () => {
+    a = true;
+    b = false;
+    window.scrollTo(0, 0);
     btn.classList.remove("sticky__btn--open");
     item.classList.remove("sticky-body--open");
 });
